@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.conexia.modelo.ArchivoAlfabeta" 
+        table="archivo_alfabeta" schema="public">
+ 
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="sequence">
+            	<param name="sequence">archivoalfabeta_id_seq</param>
+            </generator>
+        </id>
+        
+		<property name="numero" type="long">
+            <column name="numero" />
+        </property>
+		<property name="tipo"  type="string">
+            <column name="tipo" />
+        </property>
+		<property name="tipoActualizacion" type="string">
+            <column name="tipo_actualizacion" />
+        </property>
+		<property name="fecha" type="long">
+            <column name="fecha" />
+        </property>
+		<property name="extension" type="string">
+            <column name="extension" />
+        </property>
+        
+        <property name="fechaInsert" type="timestamp">
+            <column name="fecha_insert" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
+

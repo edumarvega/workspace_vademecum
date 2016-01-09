@@ -1,0 +1,22 @@
+package ar.com.conexia.modelo;
+
+import org.springframework.scheduling.quartz.QuartzJobBean;
+
+public class DownloaderJob extends QuartzJobBean{
+	
+	private DownloaderTask downloaderTask;
+	
+	public void setDownloaderTask(DownloaderTask downloaderTask){
+		this.downloaderTask = downloaderTask;
+	}
+	
+	protected void executeInternal(JobExecutionContext context)
+	throws JobExecutionException {
+ 
+		
+ 
+	}
+
+	
+
+}

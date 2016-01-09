@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 1 source folder(s) to &apos;vademecum&apos;&#x0D;&#x0A;- Original project: &apos;StrutsExample&apos;&#x0D;&#x0A;- Destination element: &apos;vademecum&apos;&#x0D;&#x0A;- Original element: &apos;StrutsExample/src/main/java&apos;" description="Copy source folder" destination="=vademecum" element1="/src\/main\/java" flags="6" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyRoots" roots="1" stamp="1320295386844" version="1.0"/>
+</session>

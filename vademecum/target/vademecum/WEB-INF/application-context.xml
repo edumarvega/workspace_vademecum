@@ -1,0 +1,67 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+    <!-- Scheduler task--> 
+ 	<bean name="schedulerTask" class="ar.com.conexia.modelo.SchedulerTask">
+ 	<property name="mailSender">
+			<ref bean="mailSender" />
+		</property>
+	</bean>	
+ 	
+ 	<!-- Scheduler job  -->
+	<bean name="schedulerJob"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+ 
+		<property name="jobClass" value="ar.com.conexia.modelo.SchedulerJob" />
+	 
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="schedulerTask" value-ref="schedulerTask" />
+			</map>
+		</property>
+ 
+	</bean>
+
+	<!-- Cron Trigger -->
+	<bean id="cronTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+ 
+		<property name="jobDetail" ref="schedulerJob" />
+		<property name="cronExpression" value="0 0 3 * * ?" />
+ 
+	</bean>
+	
+	<!-- Scheduler-->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+		   <list>
+		      <ref bean="schedulerJob" />
+		   </list>
+		</property>
+	 
+		<property name="triggers">
+		    <list>
+				<ref bean="cronTrigger" />
+		    </list>
+		</property>
+   </bean> 
+   
+   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.googlemail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="vademecumconexia@gmail.com" />
+		<property name="password" value="vademecum2011" />
+ 
+		<property name="javaMailProperties">
+	   		<props>
+       	    	  <prop key="mail.smtp.auth">true</prop>
+       	      	  <prop key="mail.smtp.starttls.enable">true</prop>
+       	   </props>
+		</property>
+	</bean>
+ 
+	
+  
+</beans>

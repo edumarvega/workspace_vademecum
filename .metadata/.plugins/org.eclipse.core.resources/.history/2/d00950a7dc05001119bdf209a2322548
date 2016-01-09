@@ -1,0 +1,48 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+    <!-- Scheduler task -->
+ 	<bean name="downloaderTask" class="ar.com.conexia.modelo.DownloaderTask" />
+ 	
+ 	<!-- Scheduler job -->
+	<bean name="downloaderJob"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+ 
+		<property name="jobClass" value="ar.com.conexia.modelo.DownloaderJob" />
+	 
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="downloaderTask" value-ref="downloaderTask" />
+			</map>
+		</property>
+ 
+	</bean>
+
+	<!-- Cron Trigger -->
+	<bean id="cronTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+ 
+		<property name="jobDetail" ref="downloaderJob" />
+		<property name="cronExpression" value="0/5 * * * * ?" />
+ 
+	</bean>
+	
+	<!-- Scheduler -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+		   <list>
+		      <ref bean="downloaderJob" />
+		   </list>
+		</property>
+	 
+		<property name="triggers">
+		    <list>
+				<ref bean="cronTrigger" />
+		    </list>
+		</property>
+   </bean>
+   
+ 
+</beans>

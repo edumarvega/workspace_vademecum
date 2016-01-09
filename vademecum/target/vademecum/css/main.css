@@ -1,0 +1,22 @@
+.headercnx{   
+  width: 300px;
+	height: 15px;
+  text-align:center;
+}
+
+.mensaje{ 
+    width:420px;
+	height:60px;
+ 	margin: 300px 10px 100px 450px;
+ 	padding:50px 0px 5px 0px ; 
+  	border: 2px solid #9ACD32;
+	background-color: #E0EEE0;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-ms-border-radius:5px;
+	font-family:Tahoma;
+	font-size:11px;
+	font-weight:bold;
+	color:#000000;
+	text-align:center;
+}

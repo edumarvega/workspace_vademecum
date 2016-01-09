@@ -1,0 +1,5 @@
+package ar.com.conexia.modelo;
+
+public class DownloaderTask {
+
+}
